@@ -1,50 +1,21 @@
-import { LitElement, css, html } from 'lit';
-import { customElement } from 'lit/decorators';
+import { LitElement, css, html  } from 'lit';
+import { customElement } from "lit/decorators";
 
-import './app-home';
+// import './app-home';
+import './app-intro';
 
 import { Router } from '@vaadin/router';
 
 import '../components/header';
 
+
 @customElement('app-index')
 export class AppIndex extends LitElement {
+
   static get styles() {
     return css`
       main {
-        padding: 16px;
-      }
 
-      #routerOutlet > * {
-        width: 100% !important;
-      }
-
-      #routerOutlet > .leaving {
-        animation: 160ms fadeOut ease-in-out;
-      }
-
-      #routerOutlet > .entering {
-        animation: 160ms fadeIn linear;
-      }
-
-      @keyframes fadeOut {
-        from {
-          opacity: 1;
-        }
-
-        to {
-          opacity: 0;
-        }
-      }
-
-      @keyframes fadeIn {
-        from {
-          opacity: 0.2;
-        }
-
-        to {
-          opacity: 1;
-        }
       }
     `;
   }
@@ -54,27 +25,24 @@ export class AppIndex extends LitElement {
   }
 
   firstUpdated() {
-    // this method is a lifecycle even in lit
-    // for more info check out the lit docs https://lit.dev/docs/components/lifecycle/
-
     // For more info on using the @vaadin/router check here https://vaadin.com/router
     const router = new Router(this.shadowRoot?.querySelector('#routerOutlet'));
     router.setRoutes([
-      // temporarily cast to any because of a Type bug with the router
+      { path: '/', component: 'app-intro' },
       {
-        path: '',
-        animate: true,
-        children: [
-          { path: '/', component: 'app-home' },
-          {
-            path: '/about',
-            component: 'app-about',
-            action: async () => {
-              await import('./app-about.js');
-            },
-          },
-        ],
-      } as any,
+        path: '/:room',
+        component: 'app-home',
+        action: async() => {
+          await import('./app-home.js');
+        },
+      },
+      {
+        path: "/about",
+        component: "app-about",
+        action: async() => {
+          await import('./app-about.js');
+        },
+      }
     ]);
   }
 

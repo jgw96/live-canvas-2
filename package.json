@@ -12,9 +12,13 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@azure/msal-browser": "^2.17.0",
     "@pwabuilder/pwainstall": "^1.6.6",
     "@vaadin/router": "^1.7.2",
+    "browser-fs-access": "^0.20.5",
+    "idb-keyval": "^6.0.2",
     "lit": "^2.0.0-rc.2",
+    "pointer-tracker": "^2.5.3",
     "workbox-build": "^5.1.4",
     "workbox-core": "^6.0.2",
     "workbox-precaching": "^6.0.2"

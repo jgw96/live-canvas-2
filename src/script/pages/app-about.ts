@@ -1,10 +1,16 @@
 import { LitElement, css, html } from 'lit';
-import { customElement } from 'lit/decorators';
+import { customElement } from "lit/decorators";
+
 
 @customElement('app-about')
 export class AppAbout extends LitElement {
+
   static get styles() {
-    return css``;
+    return css`
+      :host {
+        padding: 16px;
+      }
+    `;
   }
 
   constructor() {
