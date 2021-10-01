@@ -236,7 +236,7 @@ export class AppHome extends LitElement {
       #endButton {
         position: fixed;
         bottom: 16px;
-        right: 6em;
+        right: 5.4em;
         width: 48px;
         height: 48px;
         border-width: initial;

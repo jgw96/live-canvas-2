@@ -110,6 +110,23 @@ export class AppToolbar extends LitElement {
         animation-duration: 300ms;
       }
 
+      @media (screen-spanning: single-fold-vertical) {
+        #endPromptContainer {
+          width: 50vw;
+          right: 0;
+          left: initial;
+        }
+      }
+
+      @media(screen-spanning: single-fold-horizontal) {
+        #endPromptContainer {
+          height: 50vh;
+          right: 0;
+          left: 0;
+          padding-bottom: 0;
+        }
+      }
+
 
       #endPrompt {
         background: white;
@@ -147,6 +164,7 @@ export class AppToolbar extends LitElement {
 
       #end-button {
         margin-left: 6px;
+        background: red;
       }
 
       #noButton {
@@ -205,6 +223,14 @@ export class AppToolbar extends LitElement {
 
         #innerBlock {
           width: 100%;
+        }
+      }
+
+      @media(screen-spanning: single-fold-vertical) {
+        :host {
+          bottom: 80px;
+          right: 16px;
+          left: unset;
         }
       }
 
