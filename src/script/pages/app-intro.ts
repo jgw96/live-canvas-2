@@ -13,6 +13,7 @@ import "../components/session-item";
 @customElement("app-intro")
 export class AppIntro extends LitElement {
   @state() savedSessions: Array<any> | undefined = [];
+  @state() sessionName: boolean = false;
 
   static get styles() {
     return css`
@@ -213,6 +214,26 @@ export class AppIntro extends LitElement {
 
   render() {
     return html`
+            ${this.sessionName
+        ? html`
+            <div id="sessionNameContainer">
+              <div id="sessionName">
+                <h2>Name of the session?</h2>
+
+                <div id="sessionNameActions">
+                  <fluent-button @click="${this.no}">No</fluent-button>
+                  <fluent-button
+                    id="end-button"
+                    appearance="accent"
+                    @click="${this.end}"
+                    >End</fluent-button
+                  >
+                </div>
+              </div>
+            </div>
+          `
+        : null}
+
       <div id="glass">
         <div>
           ${this.savedSessions
@@ -255,9 +276,12 @@ export class AppIntro extends LitElement {
                   </div>
                 </div>
               `}
+
+
           ${this.savedSessions
             ? html`<h3 id="recent-header">Recent Sessions</h3>`
             : null}
+
           <div id="saved-list">
             ${this.savedSessions
               ? this.savedSessions.map((session) => {
